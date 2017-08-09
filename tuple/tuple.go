@@ -100,9 +100,13 @@ func (t Tuple) Pack() []byte {
 			buf.WriteByte(0x00)
 		case int64:
 			encodeInt(buf, e)
+		case uint32:
+			encodeInt(buf, int64(e))
 		case uint64:
 			encodeInt(buf, int64(e))
 		case int:
+			encodeInt(buf, int64(e))
+		case byte:
 			encodeInt(buf, int64(e))
 		case []byte:
 			encodeBytes(buf, 0x01, e)
